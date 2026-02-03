@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КЭМ-26 — Первый экран (точная копия)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background-color: #f5f5dc;
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 78px;
+            display: flex;
+            align-items: center;
+            padding: 0 140px;
+            z-index: 1000;
+            background: transparent;
+            transition: background-color 0.3s ease;
+        }
+        .nav.scrolled {
+            background: rgba(245, 245, 220, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: 40px;
+        }
+        .nav-logo svg {
+            width: 40px;
+            height: 40px;
+        }
+        .nav-logo-text {
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+            max-width: 140px;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex: 1;
+        }
+        .nav-menu a {
+            color: #000;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+        .nav-menu a:hover {
+            color: #f39200;
+        }
+        .nav-cta {
+            background-color: #f39200;
+            color: #fff !important;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            margin-left: auto;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            box-shadow: 0px 0px 15px 3px rgba(243,146,0,0.2);
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 0px 20px 5px rgba(243,146,0,0.3);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding-top: 78px; /* nav height */
+            min-height: 100vh;
+            background-color: #f5f5dc;
+        }
+
+        /* Top part - БИЗНЕС-КОНФЕРЕНЦИЯ */
+        .hero-top {
+            padding: 30px 140px 40px;
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .hero-title {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+        .hero-separator {
+            width: 3px;
+            min-height: 80px;
+            background-color: #f39200;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+        .hero-location {
+            font-size: 22px;
+            font-weight: 400;
+            color: #000;
+            line-height: 1.4;
+            max-width: 320px;
+            padding-top: 10px;
+        }
+
+        /* Bottom part - two columns */
+        .hero-bottom {
+            display: flex;
+            padding: 40px 140px 60px;
+            gap: 60px;
+            align-items: flex-end;
+        }
+        .hero-left {
+            flex: 1;
+        }
+        .hero-subtitle {
+            font-size: 40px;
+            font-weight: 900;
+            color: #000;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #000;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background-color: #f39200;
+            color: #fff;
+            padding: 20px 50px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 0px 15px 3px rgba(243,146,0,0.2);
+        }
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 0px 20px 5px rgba(243,146,0,0.3);
+        }
+        .hero-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Right - Countdown card */
+        .hero-right {
+            flex-shrink: 0;
+            width: 520px;
+        }
+        .countdown-card {
+            background-color: #12263a;
+            border-radius: 10px;
+            padding: 50px 40px;
+            text-align: center;
+        }
+        .countdown-date {
+            font-size: 38px;
+            font-weight: 900;
+            color: #f39200;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .countdown-label {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .countdown-item {
+            text-align: center;
+        }
+        .countdown-number {
+            font-size: 64px;
+            font-weight: 900;
+            color: #f39200;
+            line-height: 1;
+        }
+        .countdown-unit {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Cookie banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 600px;
+            background: #fff;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 1000;
+            font-size: 14px;
+            color: #000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .cookie-btn {
+            background: transparent;
+            border: 2px solid #000;
+            padding: 8px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        /* Floating buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+        .float-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .float-btn-label {
+            background: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            white-space: nowrap;
+        }
+        .float-btn-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .float-btn-icon.telegram {
+            background: #2AABEE;
+        }
+        .float-btn-icon.chat {
+            background: #f39200;
+        }
+        .float-btn-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav { padding: 0 40px; }
+            .hero-top { padding: 30px 40px 40px; }
+            .hero-bottom { padding: 40px 40px 60px; flex-direction: column; }
+            .hero-right { width: 100%; }
+            .hero-title { font-size: 52px; }
+        }
+        @media (max-width: 768px) {
+            .nav { padding: 0 20px; }
+            .nav-menu { display: none; }
+            .hero-top { padding: 20px 20px 30px; flex-direction: column; }
+            .hero-bottom { padding: 20px 20px 40px; }
+            .hero-title { font-size: 36px; }
+            .hero-subtitle { font-size: 28px; }
+            .countdown-number { font-size: 44px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="mainNav">
+        <div class="nav-logo">
+            <svg viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="15" r="12" stroke="#000" stroke-width="2" fill="none"/>
+                <path d="M14 15 L20 25 L26 15" stroke="#000" stroke-width="2" fill="none"/>
+            </svg>
+            <div class="nav-logo-text">Клуб эффективных менеджеров в стоматологии и эстетической медицине</div>
+        </div>
+        <div class="nav-menu">
+            <a href="#about">О КЭМ</a>
+            <a href="#program">Программа</a>
+            <a href="#speakers">Спикеры</a>
+            <a href="#scenes">Сцены</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#partners">Партнёры</a>
+            <a href="#contacts">Контакты</a>
+        </div>
+        <a href="#form" class="nav-cta">Купить билет</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <!-- Top: БИЗНЕС-КОНФЕРЕНЦИЯ | Location -->
+        <div class="hero-top">
+            <h1 class="hero-title">Бизнес-конференция</h1>
+            <div class="hero-separator"></div>
+            <div class="hero-location">Цифровое Деловое Пространство (ЦДП), Покровка, д.47, г. Москва</div>
+        </div>
+
+        <!-- Bottom: Two columns -->
+        <div class="hero-bottom">
+            <div class="hero-left">
+                <h2 class="hero-subtitle">В Москве уже этой весной</h2>
+                <p class="hero-description">
+                    С гордостью приглашаем вас на главное событие года для медицинского бизнеса —
+                    конференцию КЭМ26! Вас ждёт настоящий взрыв идей, инсайтов и знаний для тех, кто
+                    хочет вывести свою клинику или медицинский проект на новый уровень.
+                </p>
+                <a href="#program" class="hero-btn">
+                    Посмотреть программу конференции
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="hero-right">
+                <div class="countdown-card">
+                    <div class="countdown-date">17–19 апреля 2026 года</div>
+                    <div class="countdown-label">до конференции осталось</div>
+                    <div class="countdown-timer">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">073</div>
+                            <div class="countdown-unit">дня</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">01</div>
+                            <div class="countdown-unit">час</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">29</div>
+                            <div class="countdown-unit">минут</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">29</div>
+                            <div class="countdown-unit">секунд</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <span>Пользуясь нашим сайтом, вы соглашаетесь с тем, что мы используем cookies</span>
+        <button class="cookie-btn" onclick="document.getElementById('cookieBanner').style.display='none'">OK</button>
+    </div>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://t.me/iskandarova_olesya" class="float-btn" target="_blank">
+            <span class="float-btn-label">Новости КЭМ</span>
+            <div class="float-btn-icon telegram">
+                <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+            </div>
+        </a>
+        <a href="#" class="float-btn">
+            <span class="float-btn-label">Чат с менеджером</span>
+            <div class="float-btn-icon chat">
+                <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+            </div>
+        </a>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const target = new Date('2026-04-17T10:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+            if (diff > 0) {
+                const d = Math.floor(diff / (1000*60*60*24));
+                const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+                const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+                const s = Math.floor((diff % (1000*60)) / 1000);
+                document.getElementById('days').textContent = d.toString().padStart(2,'0');
+                document.getElementById('hours').textContent = h.toString().padStart(2,'0');
+                document.getElementById('minutes').textContent = m.toString().padStart(2,'0');
+                document.getElementById('seconds').textContent = s.toString().padStart(2,'0');
+            }
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Nav scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

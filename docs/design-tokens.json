@@ -1,0 +1,535 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "name": "KEM Conference Design System",
+    "description": "Design tokens extracted from KEM business conference website (kem.kemstom.com)",
+    "version": "1.0.0",
+    "source": "Tilda-based landing page",
+    "createdAt": "2026-02-02",
+    "author": "Design System Architect"
+  },
+
+  "color": {
+    "$description": "Color tokens organized by purpose and semantic meaning",
+
+    "primitive": {
+      "$description": "Raw color values - the foundation palette",
+
+      "blue": {
+        "900": { "$value": "#12263a", "$description": "Primary dark blue - headers, pricing sections, footer" }
+      },
+      "orange": {
+        "500": { "$value": "#f39200", "$description": "Primary orange - CTAs, accents, highlights" },
+        "400": { "$value": "#ffab33", "$description": "Lighter orange for hover states" }
+      },
+      "yellow": {
+        "500": { "$value": "#fff705", "$description": "Bright yellow for special accents" }
+      },
+      "beige": {
+        "100": { "$value": "#f5f5dc", "$description": "Light beige - content section backgrounds" },
+        "50": { "$value": "#fafaf0", "$description": "Lighter beige for subtle variations" }
+      },
+      "gray": {
+        "900": { "$value": "#191a1d", "$description": "Near black" },
+        "800": { "$value": "#242424", "$description": "Dark gray" },
+        "700": { "$value": "#333333", "$description": "Medium dark gray" },
+        "500": { "$value": "#666666", "$description": "Medium gray for secondary text" },
+        "300": { "$value": "#999999", "$description": "Light gray for disabled states" },
+        "100": { "$value": "#f5f5f5", "$description": "Very light gray" }
+      },
+      "white": {
+        "100": { "$value": "#ffffff", "$description": "Pure white" }
+      },
+      "black": {
+        "100": { "$value": "#000000", "$description": "Pure black" }
+      }
+    },
+
+    "semantic": {
+      "$description": "Semantic color tokens - use these in components",
+
+      "primary": {
+        "base": { "$value": "{color.primitive.blue.900}", "$description": "Primary brand color" },
+        "foreground": { "$value": "{color.primitive.white.100}", "$description": "Text on primary" }
+      },
+      "accent": {
+        "base": { "$value": "{color.primitive.orange.500}", "$description": "Accent/CTA color" },
+        "hover": { "$value": "{color.primitive.orange.400}", "$description": "Accent hover state" },
+        "foreground": { "$value": "{color.primitive.white.100}", "$description": "Text on accent" }
+      },
+      "highlight": {
+        "base": { "$value": "{color.primitive.yellow.500}", "$description": "Special highlight color" }
+      },
+      "background": {
+        "primary": { "$value": "{color.primitive.white.100}", "$description": "Main background" },
+        "secondary": { "$value": "{color.primitive.beige.100}", "$description": "Content section background" },
+        "tertiary": { "$value": "{color.primitive.blue.900}", "$description": "Dark section background" },
+        "subtle": { "$value": "{color.primitive.beige.50}", "$description": "Subtle background variation" }
+      },
+      "foreground": {
+        "primary": { "$value": "{color.primitive.black.100}", "$description": "Primary text" },
+        "secondary": { "$value": "{color.primitive.gray.500}", "$description": "Secondary text" },
+        "muted": { "$value": "{color.primitive.gray.300}", "$description": "Disabled/muted text" },
+        "inverse": { "$value": "{color.primitive.white.100}", "$description": "Text on dark backgrounds" }
+      },
+      "border": {
+        "default": { "$value": "rgba(0, 0, 0, 0.1)", "$description": "Default border" },
+        "strong": { "$value": "rgba(0, 0, 0, 0.2)", "$description": "Strong border" },
+        "accent": { "$value": "{color.primitive.orange.500}", "$description": "Accent border" }
+      }
+    },
+
+    "gradient": {
+      "$description": "Gradient definitions for decorative elements",
+
+      "hero": {
+        "primary": {
+          "$value": "linear-gradient(0.125turn, rgba(18, 38, 58, 1) 0%, rgba(18, 38, 58, 0.8) 50%, rgba(18, 38, 58, 0) 100%)",
+          "$description": "Primary hero gradient - dark blue fade"
+        },
+        "accent": {
+          "$value": "linear-gradient(0.195turn, rgba(243, 146, 0, 1) 0%, rgba(243, 146, 0, 0.5) 50%, rgba(243, 146, 0, 0) 100%)",
+          "$description": "Accent hero gradient - orange fade"
+        },
+        "beige": {
+          "$value": "linear-gradient(0.195turn, rgba(245, 245, 220, 1) 0%, rgba(245, 245, 220, 0.8) 50%, rgba(245, 245, 220, 0) 100%)",
+          "$description": "Beige content gradient"
+        }
+      },
+      "button": {
+        "shine": {
+          "$value": "linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100%)",
+          "$description": "Button shine effect overlay"
+        }
+      },
+      "overlay": {
+        "dark": {
+          "$value": "linear-gradient(180deg, rgba(18, 38, 58, 0.9) 0%, rgba(18, 38, 58, 0.7) 100%)",
+          "$description": "Dark overlay for images"
+        }
+      }
+    }
+  },
+
+  "typography": {
+    "$description": "Typography system tokens",
+
+    "fontFamily": {
+      "primary": {
+        "$value": "'Inter', Arial, sans-serif",
+        "$description": "Primary font family for all text"
+      },
+      "fallback": {
+        "$value": "Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        "$description": "Fallback font stack"
+      },
+      "system": {
+        "$value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+        "$description": "System font stack for maximum compatibility"
+      }
+    },
+
+    "fontSize": {
+      "$description": "Font size scale in pixels",
+      "xs": { "$value": "12px", "$description": "Extra small - captions, labels" },
+      "sm": { "$value": "14px", "$description": "Small - secondary text" },
+      "base": { "$value": "16px", "$description": "Base - body text" },
+      "md": { "$value": "18px", "$description": "Medium - emphasized body" },
+      "lg": { "$value": "20px", "$description": "Large - lead text" },
+      "xl": { "$value": "24px", "$description": "Extra large - small headings" },
+      "2xl": { "$value": "30px", "$description": "2X large - section headings" },
+      "3xl": { "$value": "36px", "$description": "3X large - major headings" },
+      "4xl": { "$value": "48px", "$description": "4X large - hero subheadings" },
+      "5xl": { "$value": "60px", "$description": "5X large - hero headings" },
+      "6xl": { "$value": "72px", "$description": "6X large - display" },
+      "7xl": { "$value": "96px", "$description": "7X large - large display" }
+    },
+
+    "fontWeight": {
+      "regular": { "$value": "400", "$description": "Regular weight - body text" },
+      "medium": { "$value": "500", "$description": "Medium weight - emphasis" },
+      "semibold": { "$value": "600", "$description": "Semibold - subheadings" },
+      "bold": { "$value": "700", "$description": "Bold - headings" },
+      "extrabold": { "$value": "800", "$description": "Extra bold - hero text" }
+    },
+
+    "lineHeight": {
+      "tight": { "$value": "1.1", "$description": "Tight - large headings" },
+      "snug": { "$value": "1.25", "$description": "Snug - headings" },
+      "normal": { "$value": "1.5", "$description": "Normal - body text" },
+      "relaxed": { "$value": "1.625", "$description": "Relaxed - readable paragraphs" },
+      "loose": { "$value": "1.75", "$description": "Loose - spacious text" }
+    },
+
+    "letterSpacing": {
+      "tighter": { "$value": "-0.05em", "$description": "Tighter - large display" },
+      "tight": { "$value": "-0.025em", "$description": "Tight - headings" },
+      "normal": { "$value": "0", "$description": "Normal - body text" },
+      "wide": { "$value": "0.025em", "$description": "Wide - caps, labels" },
+      "wider": { "$value": "0.05em", "$description": "Wider - uppercase small text" },
+      "widest": { "$value": "0.1em", "$description": "Widest - dramatic spacing" }
+    },
+
+    "textTransform": {
+      "none": { "$value": "none" },
+      "uppercase": { "$value": "uppercase" },
+      "lowercase": { "$value": "lowercase" },
+      "capitalize": { "$value": "capitalize" }
+    }
+  },
+
+  "spacing": {
+    "$description": "Spacing scale based on Tilda grid system (60/90/120/180px)",
+
+    "base": {
+      "$description": "Base spacing unit",
+      "$value": "8px"
+    },
+
+    "scale": {
+      "$description": "Spacing scale multipliers of base unit",
+      "0": { "$value": "0px" },
+      "1": { "$value": "4px", "$description": "0.5x base - minimal" },
+      "2": { "$value": "8px", "$description": "1x base - tight" },
+      "3": { "$value": "12px", "$description": "1.5x base" },
+      "4": { "$value": "16px", "$description": "2x base - default" },
+      "5": { "$value": "20px", "$description": "2.5x base" },
+      "6": { "$value": "24px", "$description": "3x base - comfortable" },
+      "8": { "$value": "32px", "$description": "4x base" },
+      "10": { "$value": "40px", "$description": "5x base - generous" },
+      "12": { "$value": "48px", "$description": "6x base" },
+      "15": { "$value": "60px", "$description": "Tilda small section spacing" },
+      "16": { "$value": "64px", "$description": "8x base" },
+      "20": { "$value": "80px", "$description": "10x base" },
+      "22": { "$value": "90px", "$description": "Tilda medium section spacing" },
+      "24": { "$value": "96px", "$description": "12x base" },
+      "30": { "$value": "120px", "$description": "Tilda large section spacing" },
+      "45": { "$value": "180px", "$description": "Tilda extra large section spacing" }
+    },
+
+    "section": {
+      "$description": "Section-specific spacing tokens",
+      "small": { "$value": "{spacing.scale.15}", "$description": "60px - small section padding" },
+      "medium": { "$value": "{spacing.scale.22}", "$description": "90px - medium section padding" },
+      "large": { "$value": "{spacing.scale.30}", "$description": "120px - large section padding" },
+      "xlarge": { "$value": "{spacing.scale.45}", "$description": "180px - hero/major section padding" }
+    },
+
+    "component": {
+      "$description": "Component-specific spacing",
+      "button-x": { "$value": "{spacing.scale.10}", "$description": "Button horizontal padding" },
+      "button-y": { "$value": "{spacing.scale.4}", "$description": "Button vertical padding" },
+      "card": { "$value": "{spacing.scale.6}", "$description": "Card internal padding" },
+      "input-x": { "$value": "{spacing.scale.4}", "$description": "Input horizontal padding" },
+      "input-y": { "$value": "{spacing.scale.3}", "$description": "Input vertical padding" }
+    }
+  },
+
+  "borderRadius": {
+    "$description": "Border radius tokens",
+
+    "none": { "$value": "0px", "$description": "Sharp edges" },
+    "sm": { "$value": "4px", "$description": "Subtle rounding" },
+    "md": { "$value": "8px", "$description": "Medium rounding" },
+    "lg": { "$value": "10px", "$description": "Card rounding" },
+    "xl": { "$value": "16px", "$description": "Large rounding" },
+    "2xl": { "$value": "24px", "$description": "Extra large rounding" },
+    "pill": { "$value": "30px", "$description": "Button/pill rounding" },
+    "full": { "$value": "9999px", "$description": "Fully rounded (circles, pills)" }
+  },
+
+  "shadow": {
+    "$description": "Box shadow tokens for elevation",
+
+    "none": { "$value": "none" },
+
+    "sm": {
+      "$value": "0px 0px 5px rgba(0, 0, 0, 0.1)",
+      "$description": "Subtle shadow - cards at rest"
+    },
+    "md": {
+      "$value": "0px 0px 10px rgba(0, 0, 0, 0.2)",
+      "$description": "Medium shadow - elevated cards"
+    },
+    "lg": {
+      "$value": "0px 0px 15px 0px rgba(0, 0, 0, 0.3)",
+      "$description": "Large shadow - modals, popovers"
+    },
+    "xl": {
+      "$value": "0px 0px 20px rgba(0, 0, 0, 0.3)",
+      "$description": "Extra large shadow - hover states"
+    },
+
+    "accent": {
+      "sm": {
+        "$value": "0px 0px 10px 2px rgba(243, 146, 0, 0.15)",
+        "$description": "Orange glow - subtle"
+      },
+      "md": {
+        "$value": "0px 0px 15px 3px rgba(243, 146, 0, 0.2)",
+        "$description": "Orange glow - CTA buttons"
+      },
+      "lg": {
+        "$value": "0px 0px 20px 5px rgba(243, 146, 0, 0.3)",
+        "$description": "Orange glow - hover state"
+      }
+    },
+
+    "inset": {
+      "button": {
+        "$value": "inset 0px -1px 0px 0px #ffffff",
+        "$description": "Button inset shadow for depth"
+      }
+    }
+  },
+
+  "transition": {
+    "$description": "Animation and transition tokens",
+
+    "duration": {
+      "instant": { "$value": "0ms" },
+      "fast": { "$value": "100ms", "$description": "Quick interactions" },
+      "normal": { "$value": "200ms", "$description": "Standard transitions" },
+      "moderate": { "$value": "300ms", "$description": "Comfortable transitions" },
+      "slow": { "$value": "500ms", "$description": "Deliberate animations" },
+      "slower": { "$value": "700ms", "$description": "Slow animations" }
+    },
+
+    "easing": {
+      "linear": { "$value": "linear" },
+      "ease": { "$value": "ease" },
+      "easeIn": { "$value": "ease-in" },
+      "easeOut": { "$value": "ease-out" },
+      "easeInOut": { "$value": "ease-in-out" }
+    },
+
+    "property": {
+      "all": { "$value": "all {transition.duration.moderate} {transition.easing.ease}" },
+      "colors": { "$value": "color {transition.duration.moderate} {transition.easing.easeInOut}, background-color {transition.duration.moderate} {transition.easing.easeInOut}" },
+      "opacity": { "$value": "opacity {transition.duration.slow} {transition.easing.ease}" },
+      "transform": { "$value": "transform {transition.duration.normal} {transition.easing.easeOut}" },
+      "shadow": { "$value": "box-shadow {transition.duration.normal} {transition.easing.easeInOut}" }
+    }
+  },
+
+  "animation": {
+    "$description": "Keyframe animation definitions",
+
+    "ripple": {
+      "$value": "ripple 0.6s ease-out",
+      "$description": "Button ripple effect on click",
+      "keyframes": {
+        "0%": { "opacity": 1, "transform": "scale(0)" },
+        "20%": { "opacity": 0, "transform": "scale(2.5)" },
+        "100%": { "opacity": 0, "transform": "scale(2.5)" }
+      }
+    },
+
+    "flash": {
+      "$value": "flash 0.6s ease-out",
+      "$description": "Button shine flash effect",
+      "keyframes": {
+        "0%": { "transform": "translateX(-100%)" },
+        "20%": { "transform": "translateX(100%)" },
+        "100%": { "transform": "translateX(100%)" }
+      }
+    },
+
+    "flashMd": {
+      "$value": "flash-md 0.6s ease-out",
+      "$description": "Medium duration flash",
+      "keyframes": {
+        "0%": { "transform": "translateX(-100%)" },
+        "30%": { "transform": "translateX(100%)" },
+        "100%": { "transform": "translateX(100%)" }
+      }
+    },
+
+    "flashLg": {
+      "$value": "flash-lg 0.6s ease-out",
+      "$description": "Slow duration flash",
+      "keyframes": {
+        "0%": { "transform": "translateX(-100%)" },
+        "40%": { "transform": "translateX(100%)" },
+        "100%": { "transform": "translateX(100%)" }
+      }
+    },
+
+    "buttonHover": {
+      "$value": "t-button-hover-animation 0.3s ease forwards",
+      "$description": "Button hover background transition",
+      "keyframes": {
+        "to": {
+          "backgroundImage": "none",
+          "backgroundColor": "transparent"
+        }
+      }
+    }
+  },
+
+  "component": {
+    "$description": "Component-specific tokens",
+
+    "button": {
+      "primary": {
+        "background": { "$value": "{color.semantic.accent.base}" },
+        "backgroundHover": { "$value": "{color.semantic.accent.hover}" },
+        "color": { "$value": "{color.semantic.accent.foreground}" },
+        "borderRadius": { "$value": "{borderRadius.pill}" },
+        "paddingX": { "$value": "40px" },
+        "paddingY": { "$value": "15px" },
+        "shadow": { "$value": "{shadow.accent.md}" },
+        "shadowHover": { "$value": "{shadow.accent.lg}" },
+        "transform": { "$value": "translateY(0)" },
+        "transformHover": { "$value": "translateY(-2px)" },
+        "transition": { "$value": "{transition.property.all}" }
+      },
+      "secondary": {
+        "background": { "$value": "transparent" },
+        "backgroundHover": { "$value": "rgba(243, 146, 0, 0.1)" },
+        "color": { "$value": "{color.semantic.accent.base}" },
+        "colorHover": { "$value": "{color.semantic.accent.hover}" },
+        "border": { "$value": "2px solid {color.semantic.accent.base}" },
+        "borderRadius": { "$value": "{borderRadius.pill}" },
+        "paddingX": { "$value": "40px" },
+        "paddingY": { "$value": "13px" }
+      },
+      "text": {
+        "background": { "$value": "transparent" },
+        "color": { "$value": "{color.semantic.accent.base}" },
+        "colorHover": { "$value": "{color.semantic.accent.hover}" },
+        "textDecoration": { "$value": "none" },
+        "textDecorationHover": { "$value": "underline" }
+      }
+    },
+
+    "card": {
+      "background": { "$value": "{color.semantic.background.primary}" },
+      "borderRadius": { "$value": "{borderRadius.lg}" },
+      "padding": { "$value": "{spacing.scale.6}" },
+      "shadow": { "$value": "{shadow.sm}" },
+      "shadowHover": { "$value": "{shadow.xl}" },
+      "transform": { "$value": "translateY(0)" },
+      "transformHover": { "$value": "translateY(-5px)" },
+      "transition": { "$value": "{transition.property.all}" }
+    },
+
+    "section": {
+      "dark": {
+        "background": { "$value": "{color.semantic.background.tertiary}" },
+        "color": { "$value": "{color.semantic.foreground.inverse}" }
+      },
+      "light": {
+        "background": { "$value": "{color.semantic.background.secondary}" },
+        "color": { "$value": "{color.semantic.foreground.primary}" }
+      },
+      "white": {
+        "background": { "$value": "{color.semantic.background.primary}" },
+        "color": { "$value": "{color.semantic.foreground.primary}" }
+      },
+      "paddingTop": {
+        "hero": { "$value": "{spacing.section.xlarge}" },
+        "content": { "$value": "{spacing.section.xlarge}" },
+        "pricing": { "$value": "{spacing.section.large}" },
+        "standard": { "$value": "{spacing.section.medium}" }
+      },
+      "paddingBottom": {
+        "hero": { "$value": "{spacing.section.xlarge}" },
+        "content": { "$value": "{spacing.section.xlarge}" },
+        "standard": { "$value": "{spacing.section.medium}" },
+        "compact": { "$value": "{spacing.section.small}" }
+      }
+    },
+
+    "input": {
+      "background": { "$value": "{color.semantic.background.primary}" },
+      "border": { "$value": "1px solid {color.semantic.border.default}" },
+      "borderFocus": { "$value": "1px solid {color.semantic.accent.base}" },
+      "borderRadius": { "$value": "{borderRadius.md}" },
+      "paddingX": { "$value": "{spacing.component.input-x}" },
+      "paddingY": { "$value": "{spacing.component.input-y}" },
+      "color": { "$value": "{color.semantic.foreground.primary}" },
+      "placeholder": { "$value": "{color.semantic.foreground.muted}" }
+    },
+
+    "avatar": {
+      "borderRadius": { "$value": "{borderRadius.full}" },
+      "sizes": {
+        "sm": { "$value": "32px" },
+        "md": { "$value": "48px" },
+        "lg": { "$value": "64px" },
+        "xl": { "$value": "96px" }
+      }
+    },
+
+    "badge": {
+      "background": { "$value": "{color.semantic.accent.base}" },
+      "color": { "$value": "{color.semantic.accent.foreground}" },
+      "borderRadius": { "$value": "{borderRadius.pill}" },
+      "paddingX": { "$value": "{spacing.scale.3}" },
+      "paddingY": { "$value": "{spacing.scale.1}" },
+      "fontSize": { "$value": "{typography.fontSize.xs}" },
+      "fontWeight": { "$value": "{typography.fontWeight.semibold}" }
+    },
+
+    "timer": {
+      "$description": "Countdown timer component styles",
+      "background": { "$value": "rgba(18, 38, 58, 0.8)" },
+      "color": { "$value": "{color.semantic.foreground.inverse}" },
+      "borderRadius": { "$value": "{borderRadius.lg}" },
+      "numberSize": { "$value": "{typography.fontSize.4xl}" },
+      "labelSize": { "$value": "{typography.fontSize.sm}" }
+    },
+
+    "navbar": {
+      "background": { "$value": "{color.semantic.background.tertiary}" },
+      "color": { "$value": "{color.semantic.foreground.inverse}" },
+      "height": { "$value": "80px" },
+      "linkColor": { "$value": "{color.semantic.foreground.inverse}" },
+      "linkColorHover": { "$value": "{color.semantic.accent.base}" }
+    },
+
+    "footer": {
+      "background": { "$value": "{color.semantic.background.tertiary}" },
+      "color": { "$value": "{color.semantic.foreground.inverse}" },
+      "padding": { "$value": "{spacing.section.large}" }
+    }
+  },
+
+  "breakpoint": {
+    "$description": "Responsive breakpoints",
+
+    "xs": { "$value": "480px", "$description": "Mobile portrait" },
+    "sm": { "$value": "640px", "$description": "Mobile landscape" },
+    "md": { "$value": "768px", "$description": "Tablet portrait" },
+    "lg": { "$value": "1024px", "$description": "Tablet landscape / small laptop" },
+    "xl": { "$value": "1200px", "$description": "Desktop" },
+    "2xl": { "$value": "1400px", "$description": "Large desktop" }
+  },
+
+  "zIndex": {
+    "$description": "Z-index scale for layering",
+
+    "hide": { "$value": -1 },
+    "base": { "$value": 0 },
+    "raised": { "$value": 1 },
+    "dropdown": { "$value": 1000 },
+    "sticky": { "$value": 1100 },
+    "fixed": { "$value": 1200 },
+    "overlay": { "$value": 1300 },
+    "modal": { "$value": 1400 },
+    "popover": { "$value": 1500 },
+    "toast": { "$value": 1600 },
+    "tooltip": { "$value": 1700 }
+  },
+
+  "media": {
+    "$description": "Media query helpers",
+
+    "prefersReducedMotion": { "$value": "(prefers-reduced-motion: reduce)" },
+    "prefersDark": { "$value": "(prefers-color-scheme: dark)" },
+    "prefersLight": { "$value": "(prefers-color-scheme: light)" },
+    "hover": { "$value": "(hover: hover)" },
+    "touch": { "$value": "(hover: none) and (pointer: coarse)" }
+  }
+}
